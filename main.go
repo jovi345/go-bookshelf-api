@@ -18,6 +18,7 @@ func main() {
 	router.GET("/books", bookHandler.GetAllBookHandler)
 	router.GET("/books/:id", bookHandler.GetBookByIDHandler)
 	router.PUT("/books/:id", bookHandler.EditBookByIDHandler)
+	router.DELETE("/books/:id", bookHandler.DeleteBookByIDHandler)
 
 	router.Run("localhost:9000")
 }

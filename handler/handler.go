@@ -141,3 +141,21 @@ func (h *BookHandler) EditBookByIDHandler(c *gin.Context) {
 		"message": "Buku berhasil diperbarui",
 	})
 }
+
+func (h *BookHandler) DeleteBookByIDHandler(c *gin.Context) {
+	id := c.Param("id")
+
+	err := h.service.Delete(id)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"status":  "fail",
+			"message": "Buku gagal dihapus. Id tidak ditemukan",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"status":  "success",
+		"message": "Buku berhasil dihapus",
+	})
+}
