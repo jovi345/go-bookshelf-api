@@ -33,7 +33,7 @@ func (r *bookRepositoryImplementation) Save(book domain.Book) (domain.Book, erro
 	return book, nil
 }
 
-func (r *bookRepositoryImplementation) Update(id string, updatedBook domain.Book) (domain.Book, error) {
+func (r *bookRepositoryImplementation) Update(id string, updatedBook domain.Book) error {
 	for i, book := range r.books {
 		if book.ID == id {
 			updatedBook.ID = book.ID
@@ -41,10 +41,10 @@ func (r *bookRepositoryImplementation) Update(id string, updatedBook domain.Book
 			updatedBook.UpdatedAt = time.Now().Format(time.RFC3339)
 			updatedBook.Finished = updatedBook.ReadPage == updatedBook.PageCount
 			r.books[i] = updatedBook
-			return updatedBook, nil
+			return nil
 		}
 	}
-	return domain.Book{}, errors.New("book not found")
+	return errors.New("book not found")
 }
 
 func (r *bookRepositoryImplementation) Delete(id string) error {

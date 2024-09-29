@@ -17,6 +17,7 @@ func main() {
 	router.POST("/books", bookHandler.AddBookHandler)
 	router.GET("/books", bookHandler.GetAllBookHandler)
 	router.GET("/books/:id", bookHandler.GetBookByIDHandler)
+	router.PUT("/books/:id", bookHandler.EditBookByIDHandler)
 
 	router.Run("localhost:9000")
 }

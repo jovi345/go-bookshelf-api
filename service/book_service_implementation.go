@@ -23,7 +23,7 @@ func (s *bookServiceImplementation) Save(book domain.Book) (domain.Book, error) 
 	return s.repo.Save(book)
 }
 
-func (s *bookServiceImplementation) Update(id string, updatedBook domain.Book) (domain.Book, error) {
+func (s *bookServiceImplementation) Update(id string, updatedBook domain.Book) error {
 	return s.repo.Update(id, updatedBook)
 }
 
